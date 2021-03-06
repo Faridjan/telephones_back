@@ -32,19 +32,19 @@ class Mark
 
     /**
      * @ORM\OneToOne(targetEntity="App\Model\Content\Entity\Content", inversedBy="mark")
-     * @ORM\JoinColumn(name="content_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="content_id", referencedColumnName="id")
      */
     private ?Content $content;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string")
      */
-    private array $coordinates;
+    private string $coordinates;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?array $options;
+    private ?string $options;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -59,11 +59,11 @@ class Mark
     public function __construct(
         UUIDType $id,
         string $name,
+        string $coordinates,
         DateTimeImmutable $createdAt,
-        array $coordinates,
-        ?Content $content = null,
         ?string $description = null,
-        ?array $options = null
+        ?Content $content = null,
+        ?string $options = null
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -132,33 +132,33 @@ class Mark
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getCoordinates(): array
+    public function getCoordinates(): string
     {
         return $this->coordinates;
     }
 
     /**
-     * @param array $coordinates
+     * @param string $coordinates
      */
-    public function changeCoordinates(array $coordinates): void
+    public function changeCoordinates(string $coordinates): void
     {
         $this->coordinates = $coordinates;
     }
 
     /**
-     * @return array|null
+     * @return string|null
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?string
     {
         return $this->options;
     }
 
     /**
-     * @param array|null $options
+     * @param string|null $options
      */
-    public function setOptions(?array $options): void
+    public function setOptions(?string $options): void
     {
         $this->options = $options;
     }

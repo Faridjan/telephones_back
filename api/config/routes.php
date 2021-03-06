@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Action\HomeAction;
+use App\Http\Action\V1\Mark\MarkAddAction;
 use App\Http\Action\V1\Proxy\CheckAction;
 use App\Http\Action\V1\Proxy\LoginAction;
 use App\Http\Action\V1\Proxy\LogoutAction;
@@ -23,7 +24,7 @@ return static function (App $app) {
                 '/marks',
                 function (RouteCollectorProxy $group) {
 //                    $group->get('', MarkAction::class);
-//                    $group->get('/add', MarkAddAction::class);
+                    $group->post('/add', MarkAddAction::class);
 //                    $group->get('/all', MarkAllAction::class);
 //                    $group->get('/find', MarkFindAction::class);
 //                    $group->get('/update', MarkUpdateAction::class);
@@ -39,9 +40,9 @@ return static function (App $app) {
                 }
             );
         }
-    )
-        ->add(JwtAccessMiddleware::class)
-        ->add(LocalStorageRequestMiddleware::class);
+    );
+//        ->add(JwtAccessMiddleware::class)
+//        ->add(LocalStorageRequestMiddleware::class);
 
     $app->group(
         '/v1/users',

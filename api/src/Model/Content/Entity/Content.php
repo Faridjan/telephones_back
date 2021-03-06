@@ -6,6 +6,7 @@ use App\Model\Content\Type\ContentFileType;
 use App\Model\Content\Type\ContentHtmlType;
 use App\Model\Content\Type\ContentImgType;
 use App\Model\Mark\Entity\Mark;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Model\Type\UUIDType;
 use DomainException;
@@ -28,9 +29,9 @@ class Content
     private ?Mark $mark;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?array $contentJson;
+    private ?string $contentJson;
 
     /**
      * @ORM\Column(type="content_html_type", nullable=true)
@@ -47,20 +48,32 @@ class Content
      */
     private ?ContentFileType $contentFile;
 
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private DateTimeImmutable $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private DateTimeImmutable $updatedAt;
+
+
     public function __construct(
         UUIDType $id,
-        ?Mark $mark = null,
-        ?array $contentJson = null,
+        DateTimeImmutable $createdAt,
+        ?string $contentJson = null,
         ?ContentHtmlType $contentHtml = null,
         ?ContentImgType $contentImg = null,
         ?ContentFileType $contentFile = null
     ) {
         $this->id = $id;
-        $this->mark = $mark;
         $this->contentJson = $contentJson;
         $this->contentHtml = $contentHtml;
         $this->contentImg = $contentImg;
         $this->contentFile = $contentFile;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $createdAt;
     }
 
     /**
@@ -80,17 +93,17 @@ class Content
     }
 
     /**
-     * @return array|null
+     * @return string|null
      */
-    public function getContentJson(): ?array
+    public function getContentJson(): ?string
     {
         return $this->contentJson;
     }
 
     /**
-     * @param array|null $contentJson
+     * @param string|null $contentJson
      */
-    public function changeContentJson(?array $contentJson): void
+    public function changeContentJson(?string $contentJson): void
     {
         $this->contentJson = $contentJson;
     }
@@ -152,4 +165,24 @@ class Content
         $this->contentFile = $contentFile;
     }
 
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function applyUpdatedAt(DateTimeImmutable $date): void
+    {
+        $this->updatedAt = $date;
+    }
 }

@@ -6,6 +6,7 @@ namespace App\Http\Action\V1\Mark;
 
 use App\Http\Response\JsonResponse;
 use App\Infrastructure\Symfony\Validator\Validator;
+use App\Model\Mark\Command\Add\Command;
 use App\Model\Mark\Command\Add\Handler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -24,29 +25,32 @@ class MarkAddAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        /**
-         * @psalm-var array{
-         *      name_ru:?string
-         *      name_en:?string
-         *      region_id:?string
-         * } $data
-         */
         $data = $request->getParsedBody();
 
-        $nameRu = $data['name_ru'] ?? '';
-        $nameEn = $data['name_en'] ?? '';
-        $regionId = $data['region_id'] ?? '';
-        $zoneId = $data['zone_id'] ?? '';
-        $type = $data['type'] ?? CityType::CITY;
-        $central = isset($data['central']) ? StrBoolHelper::getBoolOrString($data['central']) : null;
+        // "options": "",
+        // "content_json": "",
+        // "content_html": "",
+        // "content_file": "",
+        // "content_img": ""
+
+        $name = $data['name'] ?? '';
+        $description = $data['description'] ?? '';
+        $coordinates = $data['coordinates'] ?? [];
+        $options = $data['options'] ?? [];
+        $contentJson = $data['content_json'] ?? [];
+        $contentHtml = $data['content_html'] ?? null;
+        $contentFile = $data['content_file'] ?? null;
+        $contentImg = $data['content_img'] ?? null;
 
         $command = new Command();
-        $command->nameRu = $nameRu;
-        $command->nameEn = $nameEn;
-        $command->regionId = $regionId;
-        $command->zoneId = $zoneId;
-        $command->type = $type;
-        $command->central = $central;
+        $command->name = $name;
+        $command->description = $description;
+        $command->coordinates = $coordinates;
+        $command->options = $options;
+        $command->contentJson = $contentJson;
+        $command->contentHtml = $contentHtml;
+        $command->contentFile = $contentFile;
+        $command->contentImg = $contentImg;
 
         $this->validator->validate($command);
 

@@ -48,12 +48,22 @@ class MarkRepository
     }
 
 
-    public function hasByNameRu(string $name): bool
+    public function hasByName(string $name): bool
     {
         return $this->repository->createQueryBuilder('t')
                 ->select('COUNT(t.id)')
                 ->andWhere('t.name = :name_ru')
                 ->setParameter(':name_ru', $name)
+                ->getQuery()
+                ->getSingleScalarResult() > 0;
+    }
+
+    public function hasByCoordinates(string $coordinates): bool
+    {
+        return $this->repository->createQueryBuilder('t')
+                ->select('COUNT(t.id)')
+                ->andWhere('t.coordinates = :coordinates')
+                ->setParameter(':coordinates', $coordinates)
                 ->getQuery()
                 ->getSingleScalarResult() > 0;
     }

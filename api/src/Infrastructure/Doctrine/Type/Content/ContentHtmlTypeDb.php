@@ -18,9 +18,12 @@ class ContentHtmlTypeDb extends StringType
      * @param AbstractPlatform $platform
      * @return string
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): string
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        return $value instanceof ContentHtmlType ? $value->getValue() : (string)$value;
+        if ($value === null) {
+            return null;
+        }
+        return $value instanceof ContentHtmlType ? base64_encode($value->getValue()) : (string)$value;
     }
 
     /**
@@ -30,7 +33,7 @@ class ContentHtmlTypeDb extends StringType
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?ContentHtmlType
     {
-        return !empty($value) ? new ContentHtmlType((string)$value) : null;
+        return !empty($value) ? new ContentHtmlType(base64_decode($value)) : null;
     }
 
     public function getName(): string
