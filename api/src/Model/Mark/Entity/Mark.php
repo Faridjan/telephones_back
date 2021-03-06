@@ -6,7 +6,6 @@ use App\Model\Content\Entity\Content;
 use App\Model\Type\UUIDType;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Table()
@@ -158,7 +157,7 @@ class Mark
     /**
      * @param string|null $options
      */
-    public function setOptions(?string $options): void
+    public function changeOptions(?string $options): void
     {
         $this->options = $options;
     }
