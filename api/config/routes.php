@@ -7,6 +7,7 @@ use App\Http\Action\V1\Mark\MarkAction;
 use App\Http\Action\V1\Mark\MarkAddAction;
 use App\Http\Action\V1\Mark\MarkAllAction;
 use App\Http\Action\V1\Mark\MarkFindAction;
+use App\Http\Action\V1\Mark\MarkUpdateAction;
 use App\Http\Action\V1\Proxy\CheckAction;
 use App\Http\Action\V1\Proxy\LoginAction;
 use App\Http\Action\V1\Proxy\LogoutAction;
@@ -28,7 +29,7 @@ return static function (App $app) {
                     $group->post('/add', MarkAddAction::class);
                     $group->get('/all', MarkAllAction::class);
                     $group->get('/find', MarkFindAction::class);
-//                    $group->get('/update', MarkUpdateAction::class);
+                    $group->put('/update', MarkUpdateAction::class);
                 }
             );
 
