@@ -1,0 +1,8 @@
+/api/vendor/
+/.idea/
+.env
+*.key
+
+/api/var/*/*
+!/api/var/cache/.gitkeep
+!/api/var/log/.gitkeep
