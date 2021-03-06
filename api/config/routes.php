@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Action\HomeAction;
+use App\Http\Action\V1\Mark\MarkAction;
 use App\Http\Action\V1\Mark\MarkAddAction;
 use App\Http\Action\V1\Proxy\CheckAction;
 use App\Http\Action\V1\Proxy\LoginAction;
@@ -23,7 +24,7 @@ return static function (App $app) {
             $group->group(
                 '/marks',
                 function (RouteCollectorProxy $group) {
-//                    $group->get('', MarkAction::class);
+                    $group->get('', MarkAction::class);
                     $group->post('/add', MarkAddAction::class);
 //                    $group->get('/all', MarkAllAction::class);
 //                    $group->get('/find', MarkFindAction::class);
