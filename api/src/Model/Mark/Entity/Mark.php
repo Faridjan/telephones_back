@@ -30,8 +30,8 @@ class Mark
     private ?string $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Model\Content\Entity\Content", inversedBy="mark")
-     * @ORM\JoinColumn(name="content_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="App\Model\Content\Entity\Content", inversedBy="mark", cascade={"remove"})
+     * @ORM\JoinColumn(name="content_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private ?Content $content;
 
