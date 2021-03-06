@@ -78,8 +78,8 @@ class MarkFetcher
             'id' => $mark->getId()->getValue(),
             'name' => $mark->getName(),
             'description' => $mark->getDescription(),
-            'coordinates' => $mark->getCoordinates(),
-            'options' => $mark->getOptions(),
+            'coordinates' => json_decode($mark->getCoordinates(), true),
+            'options' => json_decode($mark->getOptions(), true),
             'content_id' => $mark->getContent()->getId()->getValue(),
             'created_at' => $mark->getCreatedAt()->format(FormatHelper::FRONTEND_DATE_FORMAT),
             'updated_at' => $mark->getUpdatedAt()->format(FormatHelper::FRONTEND_DATE_FORMAT)
