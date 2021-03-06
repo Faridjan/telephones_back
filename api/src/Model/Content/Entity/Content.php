@@ -109,11 +109,27 @@ class Content
     }
 
     /**
+     * @return bool
+     */
+    public function hasContentJson(): bool
+    {
+        return !is_null($this->contentJson);
+    }
+
+    /**
      * @return ContentHtmlType|null
      */
     public function getContentHtml(): ?ContentHtmlType
     {
         return $this->contentHtml;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasContentHtml(): bool
+    {
+        return !is_null($this->contentHtml);
     }
 
     /**
@@ -136,6 +152,14 @@ class Content
     }
 
     /**
+     * @return bool
+     */
+    public function hasContentImg(): bool
+    {
+        return !is_null($this->contentImg);
+    }
+
+    /**
      * @param ContentImgType|null $contentImg
      */
     public function changeContentImg(?ContentImgType $contentImg): void
@@ -152,6 +176,14 @@ class Content
     public function getContentFile(): ?ContentFileType
     {
         return $this->contentFile;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasContentFile(): bool
+    {
+        return !is_null($this->contentFile);
     }
 
     /**

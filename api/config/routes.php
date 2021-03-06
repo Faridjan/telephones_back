@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Action\HomeAction;
+use App\Http\Action\V1\Content\ContentAction;
 use App\Http\Action\V1\Mark\MarkAction;
 use App\Http\Action\V1\Mark\MarkAddAction;
 use App\Http\Action\V1\Mark\MarkAllAction;
@@ -36,7 +37,7 @@ return static function (App $app) {
             );
 
             $group->group(
-                '/content',
+                '/contents',
                 function (RouteCollectorProxy $group) {
                     $group->get('', ContentAction::class);
 //                    $group->get('/add', ContentAddAction::class);
