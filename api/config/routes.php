@@ -5,13 +5,12 @@ declare(strict_types=1);
 use App\Http\Action\HomeAction;
 use App\Http\Action\V1\Mark\MarkAction;
 use App\Http\Action\V1\Mark\MarkAddAction;
+use App\Http\Action\V1\Mark\MarkAllAction;
 use App\Http\Action\V1\Proxy\CheckAction;
 use App\Http\Action\V1\Proxy\LoginAction;
 use App\Http\Action\V1\Proxy\LogoutAction;
 use App\Http\Action\V1\Proxy\RefreshAction;
-use App\Http\Middleware\LocalStorage\LocalStorageRequestMiddleware;
 use App\Http\Middleware\LocalStorage\LocalStorageResponseMiddleware;
-use App\Http\Middleware\Oauth\JwtAccessMiddleware;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -26,7 +25,7 @@ return static function (App $app) {
                 function (RouteCollectorProxy $group) {
                     $group->get('', MarkAction::class);
                     $group->post('/add', MarkAddAction::class);
-//                    $group->get('/all', MarkAllAction::class);
+                    $group->get('/all', MarkAllAction::class);
 //                    $group->get('/find', MarkFindAction::class);
 //                    $group->get('/update', MarkUpdateAction::class);
                 }
