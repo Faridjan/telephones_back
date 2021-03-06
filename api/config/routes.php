@@ -22,7 +22,7 @@ return static function (App $app) {
     $app->group(
         '/v1',
         function (RouteCollectorProxy $group) {
-            $group->get('/', HomeAction::class);
+            $group->get('', HomeAction::class);
 
             $group->group(
                 '/marks',
