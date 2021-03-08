@@ -48,8 +48,8 @@ class MarkAddAction implements RequestHandlerInterface
 
         $this->validator->validate($command);
 
-        $this->handler->handle($command);
+        $ids = $this->handler->handle($command);
 
-        return new JsonResponse([], 200);
+        return new JsonResponse($ids, 200);
     }
 }

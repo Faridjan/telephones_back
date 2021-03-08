@@ -32,7 +32,7 @@ class Handler
         $this->markRepository = $markRepository;
     }
 
-    public function handle(Command $command): void
+    public function handle(Command $command): array
     {
         $name = $command->name;
         $description = $command->description ? $command->description : null;
@@ -53,7 +53,7 @@ class Handler
         }
 
         $content = new Content(
-            UUIDType::generate(),
+            $contentID = UUIDType::generate(),
             new DateTimeImmutable(),
             $contentJson,
             $contentHtml,
@@ -64,7 +64,7 @@ class Handler
         $this->contentRepository->add($content);
 
         $mark = new Mark(
-            UUIDType::generate(),
+            $markId = UUIDType::generate(),
             $name,
             $coordinates,
             new DateTimeImmutable(),
@@ -76,5 +76,10 @@ class Handler
         $this->markRepository->add($mark);
 
         $this->flusher->flush();
+
+        return [
+            'mark_id' => $markId,
+            'content_id' => $contentID
+        ];
     }
 }
