@@ -78,8 +78,8 @@ class Handler
         $this->flusher->flush();
 
         return [
-            'mark_id' => $markId,
-            'content_id' => $contentID
+            'mark_id' => $markId->getValue(),
+            'content_id' => $contentID->getValue()
         ];
     }
 }
