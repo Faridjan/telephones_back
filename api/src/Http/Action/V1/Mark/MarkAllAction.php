@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Action\V1\Mark;
-
 
 use App\Http\Response\JsonResponse;
 use App\Infrastructure\Symfony\Validator\Validator;

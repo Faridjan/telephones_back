@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Infrastructure\Doctrine\Type\Content;
-
 
 use App\Model\Content\Type\ContentImgType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

@@ -40,8 +40,8 @@ return static function (App $app) {
                 '/contents',
                 function (RouteCollectorProxy $group) {
                     $group->get('', ContentAction::class);
-//                    $group->get('/add', ContentAddAction::class);
-//                    $group->get('/update', ContentUpdateAction::class);
+                //                    $group->get('/add', ContentAddAction::class);
+                //                    $group->get('/update', ContentUpdateAction::class);
                 }
             );
         }

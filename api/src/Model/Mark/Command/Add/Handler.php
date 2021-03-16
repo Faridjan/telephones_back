@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Command\Add;
-
 
 use App\Infrastructure\Doctrine\Flusher;
 use App\Model\Content\Entity\Content;

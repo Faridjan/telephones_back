@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Entity;
-
 
 use App\Model\Type\UUIDType;
 use Doctrine\ORM\EntityManagerInterface;

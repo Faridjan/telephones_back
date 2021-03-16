@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\ReadModel\Content;
-
 
 use App\Helper\FormatHelper;
 use App\Model\Content\Command\Content\Command;

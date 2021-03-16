@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Command\Mark;
-
 
 use Symfony\Component\Validator\Constraints as Assert;
 

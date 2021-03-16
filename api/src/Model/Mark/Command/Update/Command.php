@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Command\Update;
-
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;

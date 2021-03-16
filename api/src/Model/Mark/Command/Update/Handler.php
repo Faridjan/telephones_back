@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Command\Update;
-
 
 use App\Infrastructure\Doctrine\Flusher;
 use App\Model\Mark\Entity\MarkRepository;

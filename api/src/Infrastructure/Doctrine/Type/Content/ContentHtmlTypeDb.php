@@ -1,14 +1,12 @@
 <?php
 
-
 namespace App\Infrastructure\Doctrine\Type\Content;
-
 
 use App\Model\Content\Type\ContentHtmlType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\TextType;
 
-class ContentHtmlTypeDb extends StringType
+class ContentHtmlTypeDb extends TextType
 {
 
     public const NAME = 'content_html_type';

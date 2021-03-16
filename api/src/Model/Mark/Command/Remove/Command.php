@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Model\Mark\Command\Remove;
-
 
 use Symfony\Component\Validator\Constraints as Assert;
 

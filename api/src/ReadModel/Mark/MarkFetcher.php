@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\ReadModel\Mark;
-
 
 use App\Helper\FormatHelper;
 use App\Model\Mark\Command\Mark\Command;
