@@ -33,10 +33,9 @@ class Command
     public ?array $options = null;
 
     /**
-     * @Assert\Type("array")
-     * @Assert\Count(min=0)
+     * @Assert\Type("string")
      */
-    public ?array $contentJson;
+    public ?string $contentJson;
 
     /**
      * @Assert\Type("string")

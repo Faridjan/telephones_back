@@ -37,7 +37,7 @@ class Handler
         $coordinates = !empty($command->coordinates) ? json_encode($command->coordinates) : null;
         $options = !empty($command->options) ? json_encode($command->options) : null;
 
-        $contentJson = !empty($command->contentJson) ? json_encode($command->contentJson) : null;
+        $contentJson = $command->contentJson ?? null;
         $contentHtml = $command->contentHtml ? new ContentHtmlType($command->contentHtml) : null;
         $contentFile = $command->contentFile ? new ContentFileType($command->contentFile) : null;
         $contentImg = $command->contentImg ? new ContentImgType($command->contentImg) : null;

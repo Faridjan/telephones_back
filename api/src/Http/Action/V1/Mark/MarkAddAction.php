@@ -29,7 +29,7 @@ class MarkAddAction implements RequestHandlerInterface
         $description = $data['description'] ?? '';
         $coordinates = $data['coordinates'] ?? [];
         $options = $data['options'] ?? [];
-        $contentJson = $data['content_json'] ?? [];
+        $contentJson = $data['content_json'] ?? null;
         $contentHtml = $data['content_html'] ?? null;
         $contentFile = $data['content_file'] ?? null;
         $contentImg = $data['content_img'] ?? null;
